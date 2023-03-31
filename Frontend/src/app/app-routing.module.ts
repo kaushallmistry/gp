@@ -1,10 +1,59 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [];
+import { NotfoundComponent } from './demo/components/notfound/notfound.component';
+import { AppLayoutComponent } from './layout/app.layout.component';
+import { LandingComponent } from './demo/components/landing/landing.component';
+import { LoginComponent } from './demo/components/login/login.component';
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [
+        RouterModule.forRoot(
+            [
+                {
+                    path: '',
+                    loadChildren: () =>
+                        import('./demo/components/landing/landing.module').then(
+                            (m) => m.LandingModule
+                        ),
+                },
+                {
+                    path: '',
+                    component: AppLayoutComponent,
+                    children: [
+                        {
+                            path: 'dashboard',
+                            loadChildren: () =>
+                                import(
+                                    './demo/components/dashboard/dashboard.module'
+                                ).then((m) => m.DashboardModule),
+                        },
+                        {
+                            path: 'pages',
+                            loadChildren: () =>
+                                import(
+                                    './demo/components/pages/pages.module'
+                                ).then((m) => m.PagesModule),
+                        },
+                    ],
+                },
+                {
+                    path: 'auth',
+                    loadChildren: () =>
+                        import('./demo/components/auth/auth.module').then(
+                            (m) => m.AuthModule
+                        ),
+                },
+                { path: 'login', component: LoginComponent },
+                { path: 'notfound', component: NotfoundComponent },
+                { path: '**', redirectTo: '/notfound' },
+            ],
+            {
+                scrollPositionRestoration: 'enabled',
+                anchorScrolling: 'enabled',
+                onSameUrlNavigation: 'reload',
+            }
+        ),
+    ],
+    exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
