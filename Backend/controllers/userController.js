@@ -1,10 +1,10 @@
 import jwt from "jsonwebtoken";
 import Users from "../models/user.model.js";
-import Register from "../models/register.js";
+import Profile from "../models/register.js";
 export const login = async (req, res) => {
     try {
         const {email, password} = req.body;
-        const user = await Register.findOne({ email });
+        const user = await Profile.findOne({ email });
         if (user) {
             const pay_load = {
                 email : user.email,
@@ -33,12 +33,12 @@ export const register = async (req, res) => {
     try {
       if (!email || !password ) {
         
-        return res.status(400).json({ message: 'Provide Register Credentials' });
+        return res.status(400).json({ message: 'Provide Profile Credentials' });
 
       }
       
-      const isEmailExist = await Register.findOne({ email });
-      const isUsernameExist = await Register.findOne({username});
+      const isEmailExist = await Profile.findOne({ email });
+      const isUsernameExist = await Profile.findOne({username});
       
       if (isEmailExist || isUsernameExist) {
           res.status(400).json({
@@ -47,7 +47,7 @@ export const register = async (req, res) => {
           })
       }
       else{
-            const addData = await Register.create({
+            const addData = await Profile.create({
                 id :id,
                 email : email,
                 password : password,
@@ -81,7 +81,7 @@ export const updateUserById = async (req, res) =>{
 
     const payload = req.body
 
-    const status =  await Register.findByIdAndUpdate(userId,payload,{new :true})
+    const status =  await Profile.findByIdAndUpdate(userId,payload,{new :true})
 
     if(status){
         res.status(200).json(status);
@@ -95,7 +95,7 @@ export const updateUserById = async (req, res) =>{
 export const findUserById = async (req, res) =>{
     const userId = req.params.id
 
-    const status =  await Register.findById(userId)
+    const status =  await Profile.findById(userId)
 
     if(status){
         res.status(200).json(status);
@@ -109,7 +109,7 @@ export const findUserById = async (req, res) =>{
 export const deleteUserById = async (req, res) =>{
     const userId = req.params.id
 
-    const status =  await Register.findByIdAndRemove(userId)
+    const status =  await Profile.findByIdAndRemove(userId)
 
     if(status){
         res.status(200).json(status);
