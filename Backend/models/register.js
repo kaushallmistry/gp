@@ -12,14 +12,7 @@ const swipedLeftSchema = new mongoose.Schema({
     swipedUserId: { type: String, required: true }
 });
 
-const swipedRightSchema = new mongoose.Schema({
-  
-    swipedUserId: { type: String, required: true }
-});
 
-const matchedUserSchema = new mongoose.Schema({
-    userid: { type: String, required: true }
-});
 
 
 const registerSchema = new mongoose.Schema({
@@ -46,8 +39,10 @@ const registerSchema = new mongoose.Schema({
     },
     games:[gamesSchema],
     swipedLeft:[swipedLeftSchema],
-    swipedRight:[swipedRightSchema],
-    matchedUsers:[matchedUserSchema],
+    swipedRight:[
+        {type:String},
+    ],
+    matchedUsers:[ {type:String},],
     
 },{timestamps:true});
 const Profile = mongoose.model('users',registerSchema);

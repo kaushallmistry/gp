@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 
 const convSchema = new mongoose.Schema({
 
-    member:{
-        type:String
+    members:{
+        type: Array,
     }   
 
 },{timestamps:true})

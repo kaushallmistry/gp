@@ -28,7 +28,7 @@ export const login = async (req, res) => {
 }
 export const register = async (req, res) => {
 
-  const {id,username,bio,email, password,games,matchedUsers,swipedLeft,swipedRight,chats,avatar} = req.body;
+  const {username,bio,email, password,games,matchedUsers,swipedLeft,swipedRight,avatar} = req.body;
   
     try {
       if (!email || !password ) {
@@ -48,7 +48,6 @@ export const register = async (req, res) => {
       }
       else{
             const addData = await Profile.create({
-                id :id,
                 email : email,
                 password : password,
                 username : username,
@@ -57,8 +56,7 @@ export const register = async (req, res) => {
                 games: games,
                 matchedUsers: matchedUsers,
                 swipedLeft: swipedLeft,
-                swipedRight: swipedRight,
-                chats: chats
+                swipedRight: swipedRight
             })
             if(addData){
             res.status(201).send(addData)
