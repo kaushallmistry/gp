@@ -6,7 +6,13 @@ import { StyleClassModule } from 'primeng/styleclass';
 import { DividerModule } from 'primeng/divider';
 import { ChartModule } from 'primeng/chart';
 import { PanelModule } from 'primeng/panel';
+import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
+import { ToolbarModule } from 'primeng/toolbar';
+import { DialogModule } from 'primeng/dialog';
+import { LoginComponent } from '../login/login.component';
+
+
 
 @NgModule({
     imports: [
@@ -16,8 +22,11 @@ import { ButtonModule } from 'primeng/button';
         StyleClassModule,
         ChartModule,
         PanelModule,
-        ButtonModule
+        ButtonModule,
+        CardModule,
+        ToolbarModule,
+        DialogModule,
     ],
-    declarations: [LandingComponent]
+    declarations: [LandingComponent,LoginComponent]
 })
 export class LandingModule { }

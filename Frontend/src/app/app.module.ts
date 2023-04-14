@@ -15,7 +15,7 @@ import { LoginComponent } from './demo/components/login/login.component';
 
 @NgModule({
     declarations: [
-        AppComponent, NotfoundComponent, LoginComponent
+        AppComponent, NotfoundComponent
     ],
     imports: [
         AppRoutingModule,

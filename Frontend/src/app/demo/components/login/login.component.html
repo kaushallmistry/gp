@@ -1,1 +1,23 @@
-<p>login works!</p>
+<div class="p-card">
+    <h1>Login</h1>
+    <form formGroup="formGroup">
+      <div class="p-inputgroup">
+        <div class="p-field">
+          <label htmlFor="username">Email</label>
+          <input type="text" pInputText formControlName="email" placeholder="Email" id="username" />
+        </div>
+      </div>
+      <div class="p-inputgroup">
+        <div class="p-field">
+          <label htmlFor="password">Password</label>
+          <input type="password" pPassword formControlName="password" placeholder="Password" id="password" />
+        </div>
+      </div>
+      <div class="p-inputgroup">
+        <button type="button" pButton label="Login"></button>
+        <button type="button" pButton label="Create Account" style="margin-left: 10px;"></button>
+      </div>
+    </form>
+</div>
+  
+  
