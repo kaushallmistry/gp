@@ -18,13 +18,6 @@ import { AppLayoutComponent } from './layout/app.layout.component';
                                     './demo/components/dashboard/dashboard.module'
                                 ).then((m) => m.DashboardModule),
                         },
-                        {
-                            path: 'pages',
-                            loadChildren: () =>
-                                import(
-                                    './demo/components/pages/pages.module'
-                                ).then((m) => m.PagesModule),
-                        },
                     ],
                 },
                 {

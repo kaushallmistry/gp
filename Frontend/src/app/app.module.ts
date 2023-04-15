@@ -21,9 +21,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MenuModule } from 'primeng/menu';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { ButtonModule } from 'primeng/button';
+import { SwipeComponent } from './demo/components/swipe/swipe.component';
+import { TabViewModule } from 'primeng/tabview';
+import { CardModule } from 'primeng/card';
 @NgModule({
-    declarations: [AppComponent, NotfoundComponent],
+    declarations: [AppComponent, NotfoundComponent, SwipeComponent],
     imports: [
+        CardModule,
+        TabViewModule,
         ButtonModule,
         TieredMenuModule,
         MenuModule,

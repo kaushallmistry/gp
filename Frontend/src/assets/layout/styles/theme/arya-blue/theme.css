@@ -3539,10 +3539,6 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
     padding: 1rem;
 }
 
-.fc {
-    /* FullCalendar 4 */
-    /* FullCalendar 5 */
-}
 .fc.fc-unthemed .fc-view-container th {
     background: #1e1e1e;
     border: 1px solid #383838;
@@ -4910,6 +4906,7 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
 }
 .p-tabview .p-tabview-nav li {
     margin-right: 0;
+    width: fit-content;
 }
 .p-tabview .p-tabview-nav li .p-tabview-nav-link {
     border: solid #383838;
