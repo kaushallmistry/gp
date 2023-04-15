@@ -11,8 +11,6 @@ import { EventService } from './demo/service/event.service';
 import { IconService } from './demo/service/icon.service';
 import { NodeService } from './demo/service/node.service';
 import { PhotoService } from './demo/service/photo.service';
-import { LoginComponent } from './demo/components/login/login.component';
-import { LandingComponent } from './demo/components/landing/landing.component';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { DialogModule } from 'primeng/dialog';
@@ -24,12 +22,7 @@ import { MenuModule } from 'primeng/menu';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { ButtonModule } from 'primeng/button';
 @NgModule({
-    declarations: [
-        AppComponent,
-        NotfoundComponent,
-        LoginComponent,
-        LandingComponent,
-    ],
+    declarations: [AppComponent, NotfoundComponent],
     imports: [
         ButtonModule,
         TieredMenuModule,

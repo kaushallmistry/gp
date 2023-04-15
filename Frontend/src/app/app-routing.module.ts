@@ -3,14 +3,10 @@ import { NgModule } from '@angular/core';
 import { NotfoundComponent } from './demo/components/notfound/notfound.component';
 import { AppLayoutComponent } from './layout/app.layout.component';
 
-import { LoginComponent } from './demo/components/login/login.component';
-import { LandingComponent } from './demo/components/landing/landing.component';
-
 @NgModule({
     imports: [
         RouterModule.forRoot(
             [
-                { path: '', component: LandingComponent },
                 {
                     path: '',
                     component: AppLayoutComponent,
@@ -38,7 +34,6 @@ import { LandingComponent } from './demo/components/landing/landing.component';
                             (m) => m.AuthModule
                         ),
                 },
-                { path: 'login', component: LoginComponent },
 
                 { path: 'notfound', component: NotfoundComponent },
                 { path: '**', redirectTo: '/notfound' },
