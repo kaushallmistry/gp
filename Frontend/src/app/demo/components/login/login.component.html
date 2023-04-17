@@ -10,12 +10,12 @@
       <div class="p-inputgroup">
         <div class="p-field">
           <label htmlFor="password">Password</label>
-          <input type="password" pPassword formControlName="password" placeholder="Password" id="password" />
+          <input type="password" Password formControlName="password" placeholder="Password" id="password" />
         </div>
       </div>
       <div class="p-inputgroup">
         <button type="button" pButton label="Login"></button>
-        <button type="button" pButton label="Create Account" style="margin-left: 10px;"></button>
+        <button type="button" pButton label="Create Account" style="margin-left: 10px;" (click)="onSave()"></button>
       </div>
     </form>
 </div>
