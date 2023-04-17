@@ -13,7 +13,7 @@
   
 <div class="card flex justify-content-center" style="margin: 50px; margin-top: 100px;">
     <p-card header="GP">
-        <div [class]="onMobile() ? 'flex flex-column' : 'flex flex-row'">
+        <div [fxLayout]="onMobile() ? 'column' : 'row'">
             <div>
                 <img src="https://cdn.cloudflare.steamstatic.com/store//about/logo_steam.svg" alt="Steam Logo" style="width: 200px; height: auto;">
                 <p class="m-0" style="font-size: 24px;">

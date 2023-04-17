@@ -12,28 +12,27 @@ export const swipeRight = async(req,res)=>{
     const usersIds =[userId,swipeduser]
     //getting swiped users 
 
-    const usersData = await Profile.find({ _id: { $in: usersIds } });
-    
+    const usersData = await Profile.find({ _id: { $in: usersIds } })
 
-    const swipedRightCheck = usersData[1].swipedRight.filter(v =>v === userId)
-    
-    console.log(swipedRightCheck.length)
+    const swipedUserData = usersData.filter(v => v._id == swipeduser)
+
+    const currentUserData = usersData.filter(v => v._id == userId)
+
+    const swipedRightCheck = swipedUserData[0].swipedRight.filter(v => v == userId)
+  
+    console.log(swipedRightCheck)
     //  updating current userData payload concating swipedRight and matched users
 
-    usersData[0].swipedRight.push(swipeduser)
-
-
-    // res.json(usersData)
+    currentUserData[0].swipedRight.push(swipeduser)
     
-
-  if(swipedRightCheck.length > 0){
+  if(swipedRightCheck){
     // it is for the already for swiped right user  
-    usersData[0].matchedUsers.push(swipeduser)
-    usersData[1].matchedUsers.push(userId)
+    currentUserData[0].matchedUsers.push(swipeduser)
+    swipedUserData[0].matchedUsers.push(userId)
     
-    const saveCurrentuser = await  Profile.findByIdAndUpdate(usersData[0]._id,usersData[0])
+    const saveCurrentuser = await  Profile.findByIdAndUpdate( currentUserData[0]._id, currentUserData[0])
 
-    const saveSwipeduser = await Profile.findByIdAndUpdate(usersData[1]._id,usersData[1])
+    const saveSwipeduser = await Profile.findByIdAndUpdate(swipedUserData[0]._id,swipedUserData[0])
 
       if(saveCurrentuser && saveSwipeduser){
 
@@ -46,20 +45,20 @@ export const swipeRight = async(req,res)=>{
       }
       else{
 
-        res.satus(500).json("updating users failed")
+        res.satus(400).json("updating users failed")
 
       }
 
   }else{
       // saving swiperight
-      console.log(usersData[0])
-      const saveCurrentuser = await Profile.findByIdAndUpdate(usersData[0]._id,usersData[0])
+      console.log(currentUserData[0])
+      const saveCurrentuser = await Profile.findByIdAndUpdate(currentUserData[0]._id,currentUserData[0])
       
         if(saveCurrentuser){
           res.status(200).json(saveCurrentuser)
         }
         else{
-          res.status(500).json("payload error")
+          res.status(400).json("payload error")
         }
     }
 
