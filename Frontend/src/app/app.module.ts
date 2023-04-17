@@ -28,8 +28,12 @@ import { CardModule } from 'primeng/card';
 import { LandingComponent } from './demo/components/landing/landing.component';
 import { ToolbarModule } from 'primeng/toolbar';
 import { LoginComponent } from './demo/components/login/login.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { RegisterComponent } from './demo/components/register/register.component';
+
+
 @NgModule({
-    declarations: [AppComponent, NotfoundComponent, SwipeComponent,LandingComponent,LoginComponent],
+    declarations: [AppComponent, NotfoundComponent, SwipeComponent,LandingComponent,LoginComponent, RegisterComponent],
     imports: [
         CardModule,
         TabViewModule,
@@ -52,6 +56,7 @@ import { LoginComponent } from './demo/components/login/login.component';
         CardModule,
         ToolbarModule,
         DialogModule,
+        FlexLayoutModule,
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
