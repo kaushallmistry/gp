@@ -70,7 +70,7 @@ export const register = async (req, res) => {
     } 
     catch (error) {
       console.log(error);
-      res.status(500).json({ message: 'Server error' });
+      res.status(400).json({ message: 'Server error' });
     }
 }
 
@@ -85,7 +85,7 @@ export const updateUserById = async (req, res) =>{
         res.status(200).json(status);
     }
     else{
-        res.status(500).json({ error: 'Failed to update user' });
+        res.status(400).json({ error: 'Failed to update user' });
     }
 
 }
@@ -99,7 +99,7 @@ export const findUserById = async (req, res) =>{
         res.status(200).json(status);
     }
     else{
-        res.status(500).json({ error: 'Failed to find user' });
+        res.status(400).json({ error: 'Failed to find user' });
     }
 
 }
@@ -113,7 +113,7 @@ export const deleteUserById = async (req, res) =>{
         res.status(200).json(status);
     }
     else{
-        res.status(500).json({ error: 'Failed to Delete User' });
+        res.status(400).json({ error: 'Failed to Delete User' });
     }
 
 }
