@@ -2,20 +2,11 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { NotfoundComponent } from './demo/components/notfound/notfound.component';
 import { AppLayoutComponent } from './layout/app.layout.component';
-import { LandingComponent } from './demo/components/landing/landing.component';
-import { LoginComponent } from './demo/components/login/login.component';
 
 @NgModule({
     imports: [
         RouterModule.forRoot(
             [
-                {
-                    path: '',
-                    loadChildren: () =>
-                        import('./demo/components/landing/landing.module').then(
-                            (m) => m.LandingModule
-                        ),
-                },
                 {
                     path: '',
                     component: AppLayoutComponent,
@@ -27,13 +18,6 @@ import { LoginComponent } from './demo/components/login/login.component';
                                     './demo/components/dashboard/dashboard.module'
                                 ).then((m) => m.DashboardModule),
                         },
-                        {
-                            path: 'pages',
-                            loadChildren: () =>
-                                import(
-                                    './demo/components/pages/pages.module'
-                                ).then((m) => m.PagesModule),
-                        },
                     ],
                 },
                 {
@@ -43,7 +27,7 @@ import { LoginComponent } from './demo/components/login/login.component';
                             (m) => m.AuthModule
                         ),
                 },
-                { path: 'login', component: LoginComponent },
+
                 { path: 'notfound', component: NotfoundComponent },
                 { path: '**', redirectTo: '/notfound' },
             ],

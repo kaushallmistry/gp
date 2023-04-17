@@ -1,28 +1,18 @@
 import express from "express";
-import { login,register,accesscontent } from "../controllers/userController.js";
+import { login,register,updateUserById,findUserById,deleteUserById} from "../controllers/userController.js";
+import {swipeRight} from "../controllers/swipeController.js"
 import { isAuth } from "../middleware/Auth.js";
-
 
 const router = express.Router();
 
+router.post('/user/login',login);
 
-// router
-// .route("/signup")
-// .get((req, res) => {
-//     res.send(`THIS IS SIGN-UP PAGE 
-//     1) EMAIL MUST END WITH .com or .net (no other!)
-//     2) PASSWORD MUST BE 5 MINIMUM CHARACTERS AND 20 MAX CHARACTERS WITH NO SYMBOL`)
-// })
-// .post( signup)
-// router.get('/',getPosts);
-router.post('/login',login);
-// router
-// .route("/login")
-// .get((req, res) => {
-//     res.send('THIS IS LOG-IN PAGE! PROVIDE YOUR EMAIL AND PASSWORD')
-// })
-// .post(login)
-router.post('/register',register);
+// Auth pending
+router.post('/user/register',register)
+router.put('/user/userupdate/:id',updateUserById)
+router.get('/user/finduser/:id',findUserById)
+router.delete('/user/deleteuser/:id',deleteUserById)
+router.get('/swipeRight', swipeRight)
 
-router.get('/content',isAuth,accesscontent)
+
 export default router

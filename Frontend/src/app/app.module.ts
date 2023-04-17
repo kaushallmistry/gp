@@ -11,20 +11,56 @@ import { EventService } from './demo/service/event.service';
 import { IconService } from './demo/service/icon.service';
 import { NodeService } from './demo/service/node.service';
 import { PhotoService } from './demo/service/photo.service';
+<<<<<<< HEAD
 
 @NgModule({
     declarations: [
         AppComponent, NotfoundComponent
     ],
+=======
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { DialogModule } from 'primeng/dialog';
+import { PasswordModule } from 'primeng/password';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { ToastModule } from 'primeng/toast';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MenuModule } from 'primeng/menu';
+import { TieredMenuModule } from 'primeng/tieredmenu';
+import { ButtonModule } from 'primeng/button';
+import { SwipeComponent } from './demo/components/swipe/swipe.component';
+import { TabViewModule } from 'primeng/tabview';
+import { CardModule } from 'primeng/card';
+@NgModule({
+    declarations: [AppComponent, NotfoundComponent, SwipeComponent],
+>>>>>>> 110a764c0f390c8f93f2fbf33b290cd046e781b5
     imports: [
+        CardModule,
+        TabViewModule,
+        ButtonModule,
+        TieredMenuModule,
+        MenuModule,
+        FormsModule,
+        ReactiveFormsModule,
+        ToastModule,
+        ToggleButtonModule,
+        PasswordModule,
         AppRoutingModule,
-        AppLayoutModule
+        AppLayoutModule,
+        CommonModule,
+        BrowserModule,
+        DialogModule,
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
-        CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService
+        CountryService,
+        CustomerService,
+        EventService,
+        IconService,
+        NodeService,
+        PhotoService,
+        ProductService,
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
