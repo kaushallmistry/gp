@@ -25,8 +25,11 @@ import { ButtonModule } from 'primeng/button';
 import { SwipeComponent } from './demo/components/swipe/swipe.component';
 import { TabViewModule } from 'primeng/tabview';
 import { CardModule } from 'primeng/card';
+import { LandingComponent } from './demo/components/landing/landing.component';
+import { ToolbarModule } from 'primeng/toolbar';
+import { LoginComponent } from './demo/components/login/login.component';
 @NgModule({
-    declarations: [AppComponent, NotfoundComponent, SwipeComponent],
+    declarations: [AppComponent, NotfoundComponent, SwipeComponent,LandingComponent,LoginComponent],
     imports: [
         CardModule,
         TabViewModule,
@@ -42,6 +45,12 @@ import { CardModule } from 'primeng/card';
         AppLayoutModule,
         CommonModule,
         BrowserModule,
+        DialogModule,
+        ToolbarModule,
+        CommonModule,
+        ButtonModule,
+        CardModule,
+        ToolbarModule,
         DialogModule,
     ],
     providers: [
