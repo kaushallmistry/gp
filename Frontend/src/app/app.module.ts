@@ -11,13 +11,7 @@ import { EventService } from './demo/service/event.service';
 import { IconService } from './demo/service/icon.service';
 import { NodeService } from './demo/service/node.service';
 import { PhotoService } from './demo/service/photo.service';
-<<<<<<< HEAD
 
-@NgModule({
-    declarations: [
-        AppComponent, NotfoundComponent
-    ],
-=======
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { DialogModule } from 'primeng/dialog';
@@ -33,7 +27,6 @@ import { TabViewModule } from 'primeng/tabview';
 import { CardModule } from 'primeng/card';
 @NgModule({
     declarations: [AppComponent, NotfoundComponent, SwipeComponent],
->>>>>>> 110a764c0f390c8f93f2fbf33b290cd046e781b5
     imports: [
         CardModule,
         TabViewModule,
