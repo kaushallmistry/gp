@@ -13,10 +13,9 @@ export const login = async (req, res) => {
             console.log(pay_load);
                 const token = jwt.sign(pay_load, "secret")
 
-                res.cookie('authToken', token, {maxAge:3600 * 60 * 5, httpOnly:true});
                 res.status(200).json({
-                    message : `LOGGED IN SUCCESSFULLY | TOKEN DURATION - 5 MINS`
-                    
+                    message : `LOGGED IN SUCCESSFULLY | TOKEN DURATION - 5 MINS`,
+                    token:token,
                 })
      
         }else{

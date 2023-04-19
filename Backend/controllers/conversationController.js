@@ -3,7 +3,7 @@
 
 export const createConversation = async (req,res)=>{
     
-
+return res.json("helllllo")
 }
 
 // get all conversation according to userId

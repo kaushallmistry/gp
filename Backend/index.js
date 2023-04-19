@@ -1,12 +1,9 @@
-import Users from './models/user.model.js';
 import bodyParser from "body-parser";
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import Jwtstragey from "passport-jwt";
-import { ExtractJwt } from 'passport-jwt';
 import router from "./routes/user.routes.js";
-import passport from 'passport';
+
 import  cookieParser from 'cookie-parser';
 
 
