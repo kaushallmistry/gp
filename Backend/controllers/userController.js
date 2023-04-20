@@ -10,7 +10,6 @@ export const login = async (req, res) => {
                 email : user.email,
                 id : user.id
             }
-            console.log(pay_load);
                 const token = jwt.sign(pay_load, "secret")
 
                 res.status(200).json({

@@ -30,6 +30,9 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { LoginComponent } from './demo/components/login/login.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RegisterComponent } from './demo/components/register/register.component';
+import { LoginService } from './demo/service/login.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from './demo/service/token-interceptor.service';
 
 
 @NgModule({
@@ -67,6 +70,12 @@ import { RegisterComponent } from './demo/components/register/register.component
         NodeService,
         PhotoService,
         ProductService,
+        LoginService,
+        {
+            provide:HTTP_INTERCEPTORS,
+            useClass:TokenInterceptorService,
+            multi:true
+        }
     ],
     bootstrap: [AppComponent],
 })
