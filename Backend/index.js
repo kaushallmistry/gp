@@ -3,10 +3,9 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import router from "./routes/user.routes.js";
-import  cookieParser from 'cookie-parser';
+import cookieParser from 'cookie-parser';
 import passport from "passport";
 import { Strategy,ExtractJwt } from "passport-jwt";
-import Users from "./models/user.model.js";
 import Profile from "./models/register.js";
 
 
