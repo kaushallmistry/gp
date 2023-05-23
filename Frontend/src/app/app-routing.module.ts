@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { NotfoundComponent } from './demo/components/notfound/notfound.component';
 import { AppLayoutComponent } from './layout/app.layout.component';
 import { LandingComponent } from './demo/components/landing/landing.component';
+import { RegisterComponent } from './demo/components/register/register.component';
 
 @NgModule({
     imports: [
@@ -11,6 +12,10 @@ import { LandingComponent } from './demo/components/landing/landing.component';
                 {   
                     path: '', 
                     component: LandingComponent ,
+                },
+                {
+                    path: 'register',
+                    component: RegisterComponent
                 },
                 {
                     path: '',
