@@ -27,8 +27,17 @@ TokenInterceptor(payload:any){
       this.cookieService.set('authToken',this.token);
       }
       return console.log(response,this.token);
-      
     });
 }
+
+Post(payload: any){
+
+  this.http.post('http://localhost:8000/api/user/register',payload).subscribe((response:any)=> {
+    
+    return console.log(response,this.token);
+  });
+
+}
+
 
 }
