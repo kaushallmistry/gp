@@ -1,1 +1,34 @@
-<p>register works!</p>
+<div class="p-card">
+    <h1>Create Account</h1>
+    <div style="width: 100%; padding: 20px;" fxLayoutAlign="center center">
+        <form [formGroup]="formGroup" [style.width.%]="onMobile() ? '100' : '50'" fxLayout="column">
+            <div class="p-inputgroup">
+                <div class="p-field">
+                <label htmlFor="username">Username</label>
+                <input type="text" pInputText formControlName="username" placeholder="Username" id="username" />
+                </div>
+            </div>
+            <div class="p-inputgroup">
+                <div class="p-field">
+                <label htmlFor="email">Email</label>
+                <input type="text" email formControlName="email" placeholder="Email" id="email" />
+                </div>
+            </div>
+            <div class="p-inputgroup">
+                <div class="p-field">
+                <label htmlFor="password">Password</label>
+                <input type="password" Password formControlName="password" placeholder="Password" id="password" />
+                </div>
+            </div>
+            <div class="p-inputgroup">
+                <div class="p-field">
+                <label htmlFor="password">Confirm Password</label>
+                <input type="password" Password formControlName="confirm_password" placeholder="Confirm Password" id="confirm_password" />
+                </div>
+            </div>
+            <div class="p-inputgroup" fxLayoutAlign="center center">
+                <button type="button" pButton label="Create Account"></button>
+            </div>
+        </form>
+    </div>
+</div>

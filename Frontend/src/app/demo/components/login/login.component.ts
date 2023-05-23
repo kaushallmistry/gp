@@ -10,6 +10,8 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class LoginComponent {
 
+visible: boolean = false;
+
 formGroup = new FormGroup({
   email       : new FormControl<string | null>(null,[Validators.required,Validators.email]),
   password    : new FormControl<string | null>(null,[Validators.required,Validators.maxLength(50)])
@@ -17,7 +19,7 @@ formGroup = new FormGroup({
 
 constructor(
   private service :LoginService,
-  private cookieService :CookieService
+  private cookieService :CookieService,
   )
   {
 

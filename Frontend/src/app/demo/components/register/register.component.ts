@@ -9,8 +9,19 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent {
 
   formGroup = new FormGroup({
-    email       : new FormControl(null,[Validators.required,Validators.email]),
-    password    : new FormControl(null,[Validators.required,Validators.maxLength(50)])
+    username    : new FormControl<string | null>(null,[Validators.required,Validators.email]),
+    email       : new FormControl<string | null>(null,[Validators.required,Validators.email]),
+    password    : new FormControl<string | null>(null,[Validators.required,Validators.maxLength(50)]),
+    confirm_password : new FormControl<string | null>(null,[Validators.required,Validators.maxLength(50)])
   })
+
+  /////////////
+  // Extra ///
+  ////////////
+
+  onMobile(): boolean {
+    return window.innerWidth <= 700;
+  }
+
 
 }
