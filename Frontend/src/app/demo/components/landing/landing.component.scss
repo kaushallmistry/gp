@@ -8,6 +8,7 @@
   }
 .content-container {
     transition: opacity 1s ease-in-out;
+    opacity: 85%;
   }
   
 
@@ -36,5 +37,32 @@
 .toolbar {
     border: none;
 }
+.hero-component{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('../../../../assets/images/1309831.jpg');
+  animation: changeBackground 10s infinite;
+}
 
-  
+
+
+// @keyframes changeBackground {
+//   0% {
+//     background-image: url('../../../../assets/images/1309831.jpg');
+//     background-position: 100% 50%;
+//   }
+//   33% {
+//     background-image: url('../../../../assets/images/1163700.jpg');
+//     background-position: 100% 50%;
+//   }
+//   66% {
+//     background-image: url('../../../../assets/images/1307850.jpg');
+//     background-position: 100% 50%;
+//   }
+//   100% {
+//     background-image: url('../../../../assets/images/540341.jpg');
+//     background-position: 0 50%;
+//   }
+// } 
+

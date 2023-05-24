@@ -30,7 +30,7 @@ TokenInterceptor(payload:any){
     });
 }
 
-Post(payload: any){
+Register(payload: any){
 
   this.http.post('http://localhost:8000/api/user/register',payload).subscribe((response:any)=> {
     

@@ -31,11 +31,11 @@ const registerSchema = new mongoose.Schema({
     },
     avatar:{
         type:String,
-        required:true
+        
     },
     bio:{
         type:String,
-        required:true
+       
     },
     games:[gamesSchema],
     swipedLeft:[swipedLeftSchema],

@@ -1,4 +1,5 @@
-<div class="p-card">
+<div class="register" style="width:100%; height: 100vh; " fxLayoutAlign="center center"  >
+<div class="p-card" style="width:500px; height: 600px; opacity: 85%;"  >
     <h1>Create Account</h1>
     <div style="width: 100%; padding: 20px;" fxLayoutAlign="center center">
         <form [formGroup]="formGroup" [style.width.%]="onMobile() ? '100' : '50'" fxLayout="column">
@@ -27,8 +28,10 @@
                 </div>
             </div>
             <div class="p-inputgroup" fxLayoutAlign="center center">
-                <button type="button" pButton label="Create Account"></button>
+                <button type="button" pButton label="Create Account"(click)="onSave"></button>
             </div>
+            <p> already Account exist ?<a (click)="navigateToLogin()">Login</a></p>
         </form>
     </div>
+</div>
 </div>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../../service/login.service';
 import { CookieService } from 'ngx-cookie-service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ formGroup = new FormGroup({
 
 constructor(
   private service :LoginService,
-  private cookieService :CookieService,
+  private route: ActivatedRoute,
+  private router: Router,
   )
   {
 
@@ -31,6 +33,8 @@ constructor(
       password: this.formGroup.get('password')?.value
     }
     console.log(this.service.TokenInterceptor(payload))
+
+    this.router.navigate(['/dashboard'], { relativeTo: this.route });
     
   }
 
