@@ -28,17 +28,7 @@ passport.use(new Strategy(opts, async function(jwt_payload, done) {
         return done(err,false)
     }
 }))
-// Users.findOne({id: jwt_payload._id}, function(err, user) {
-//     if (err) {
-//         return done(err, false);
-//     }
-//     if (user) {
-//         return done(null, user);
-//     } else {
-//         return done(null, false);
-//         // or you could create a new account
-//     }
-// });
+
 const CONNECTION_URL='mongodb+srv://admin:admin@database.q56qr75.mongodb.net/UserDB?retryWrites=true&w=majority'
 
 app.use("/api",router);

@@ -29,6 +29,7 @@ export const swipeLeft = async(req,res)=>{
 export const swipeRight = async(req,res)=>{
 
   const {userId,swipeduser} = req.body
+
   // console.log(userId,swipeduser)
   const usersIds =[userId,swipeduser]
   //getting swiped users 

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, AfterViewInit, NgModule, OnInit } from '@angular/core';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -31,8 +31,12 @@ import { LoginComponent } from './demo/components/login/login.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RegisterComponent } from './demo/components/register/register.component';
 import { LoginService } from './demo/service/login.service';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { TokenInterceptorService } from './demo/service/token-interceptor.service';
+import { CookieService } from 'ngx-cookie-service';
+import { TokenService } from './demo/service/tokenService';
+
+
 
 
 @NgModule({
@@ -75,8 +79,22 @@ import { TokenInterceptorService } from './demo/service/token-interceptor.servic
             provide:HTTP_INTERCEPTORS,
             useClass:TokenInterceptorService,
             multi:true
-        }
+        },
+
+    
+        
     ],
     bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule  {
+
+    constructor(
+    private cookieService: CookieService,
+    private http: HttpClient,
+    private tokenService:TokenService
+    ){}
+    
+    
+  
+
+}

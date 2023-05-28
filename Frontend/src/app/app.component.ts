@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
+import { TokenService } from './demo/service/tokenService';
 
 @Component({
     selector: 'app-root',
@@ -7,9 +8,12 @@ import { PrimeNGConfig } from 'primeng/api';
 })
 export class AppComponent implements OnInit {
 
-    constructor(private primengConfig: PrimeNGConfig) { }
+    constructor(
+        private primengConfig: PrimeNGConfig,
+        private tokenService:TokenService
+        ) { }
 
     ngOnInit() {
-        this.primengConfig.ripple = true;
+       this.tokenService.ngOnInit()
     }
 }

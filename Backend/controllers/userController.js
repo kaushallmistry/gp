@@ -1,5 +1,4 @@
 import jwt from "jsonwebtoken";
-import Users from "../models/user.model.js";
 import Profile from "../models/register.js";
 export const login = async (req, res) => {
     try {
@@ -10,11 +9,12 @@ export const login = async (req, res) => {
                 email : user.email,
                 id : user.id
             }
-                const token = jwt.sign(pay_load, "secret")
-
+                const token = jwt.sign(pay_load, "secret", { expiresIn: '2m' })
+                const refreshToken = jwt.sign(pay_load, "refreshsecret", { expiresIn: '7d' })     
                 res.status(200).json({
-                    message : `LOGGED IN SUCCESSFULLY | TOKEN DURATION - 5 MINS`,
+                    message : `LOGGED IN SUCCESSFULLY | TOKEN DURATION - 1 H`,
                     token:token,
+                    refreshToken:refreshToken,
                 })
      
         }else{
@@ -114,4 +114,45 @@ export const deleteUserById = async (req, res) =>{
         res.status(400).json({ error: 'Failed to Delete User' });
     }
 
+}
+export const getAllUsers = async (req, res) =>{
+    const userId = req.params.id
+
+    const status =  await Profile.find()
+
+    if(status){
+        res.status(200).json(status);
+    }
+    else{
+        res.status(400).json({ error: 'Failed to Delete User' });
+    }
+
+}
+export const refreshToken = async (req , res) =>{
+
+    try {
+
+        const {refreshToken} = req.body;
+        console.log(refreshToken);
+        const userpayload = jwt.verify(refreshToken,"refreshsecret")
+        console.log(userpayload)
+        
+        // const user = await Profile.findOne({});
+        if (userpayload) {
+            const pay_load = {
+                email : userpayload.email,
+                id : userpayload.id
+            }
+                const token = jwt.sign(pay_load, "secret", { expiresIn: '2m' })
+                res.status(200).json({
+                    message : `Refresh Successfull | TOKEN DURATION - 1 H`,
+                    token:token,
+                })
+     
+        }else{
+            res.status(404).json({status : 404, message : 'Either wrong credentials or user not exists!'})
+        }
+    } catch (error) {
+        res.status(400).send('SOMETHING WENT WRONG!')
+    }
 }

@@ -4,6 +4,7 @@ import { Product } from '../../api/product';
 import { ProductService } from '../../service/product.service';
 import { Subject, Subscription } from 'rxjs';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
+import { LoginService } from '../../service/login.service';
 
 @Component({
     templateUrl: './dashboard.component.html',
@@ -15,5 +16,13 @@ export class DashboardComponent implements OnInit {
     ngOnInit(): void {}
     cardAnimation(value: any) {
         this.parentSubject.next(value);
+    }
+
+    constructor( private loginService:LoginService){
+        
+    }
+
+    onclick(){
+    console.log(this.loginService.GetListofUser())
     }
 }

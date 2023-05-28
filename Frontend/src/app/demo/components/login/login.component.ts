@@ -32,7 +32,7 @@ constructor(
       email:this.formGroup.get('email')?.value,
       password: this.formGroup.get('password')?.value
     }
-    console.log(this.service.TokenInterceptor(payload))
+    console.log(this.service.Login(payload))
 
     this.router.navigate(['/dashboard'], { relativeTo: this.route });
     
