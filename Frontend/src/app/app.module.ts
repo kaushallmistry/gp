@@ -30,7 +30,7 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { LoginComponent } from './demo/components/login/login.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RegisterComponent } from './demo/components/register/register.component';
-import { LoginService } from './demo/service/login.service';
+import { ApiService } from './demo/service/Api.service';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { TokenInterceptorService } from './demo/service/token-interceptor.service';
 import { CookieService } from 'ngx-cookie-service';
@@ -75,7 +75,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
         NodeService,
         PhotoService,
         ProductService,
-        LoginService,
+        ApiService,
         {
             provide:HTTP_INTERCEPTORS,
             useClass:TokenInterceptorService,

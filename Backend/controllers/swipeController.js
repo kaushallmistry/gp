@@ -40,7 +40,7 @@ export const swipeRight = async(req,res)=>{
 
   const currentUserData = usersData.filter(v => v._id == userId)
 
-  const swipedRightCheck = swipedUserData[0].swipedRight.filter(v => v == userId)
+  const swipedRightCheck = swipedUserData[0].swipedRight.filter(v => v === userId)
 
   console.log(swipedRightCheck)
   //  updating current userData payload concating swipedRight and matched users

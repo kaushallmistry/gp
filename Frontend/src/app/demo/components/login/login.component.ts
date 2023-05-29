@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginService } from '../../service/login.service';
+import { ApiService } from '../../service/Api.service';
 import { CookieService } from 'ngx-cookie-service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -22,7 +22,7 @@ formGroup = new FormGroup({
 })
 
 constructor(
-  private service :LoginService,
+  private service :ApiService,
   private route: ActivatedRoute,
   private router: Router,
   private cookieService:CookieService
@@ -47,12 +47,12 @@ constructor(
       this.cookieService.set('refreshToken',response.refreshToken)
       this.cookieService.set('userid',response.payload.id)
       }
+      this.router.navigate(['/dashboard'], { relativeTo: this.route });
       return console.log(response,response.token);
     });
 
     this.subs.add(subs1)
 
-    this.router.navigate(['/dashboard'], { relativeTo: this.route });
     
   }
 

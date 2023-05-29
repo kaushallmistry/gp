@@ -1,14 +1,13 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { LoginService } from '../../service/login.service';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Subscription } from 'rxjs';
+import { ApiService } from '../../service/Api.service';
+import {  moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Subscription, debounce, debounceTime } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
-import { stringify } from 'querystring';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 
 
 export interface Cards{
-    id:string,
+    _id:string,
     username:string,
     email:string,
     bio:string,
@@ -29,7 +28,7 @@ export class DashboardComponent implements AfterViewInit,OnDestroy,OnInit {
     cards:Cards[] = [];
     subs = new Subscription()
     constructor( 
-        private loginService:LoginService,
+        private ApiService:ApiService,
         private cookieService:CookieService
         ){
         
@@ -41,10 +40,12 @@ export class DashboardComponent implements AfterViewInit,OnDestroy,OnInit {
     })
 
   }
+  get userid():string{
+    return this.cookieService.get("userid")
+  }
 
-    
-
-
+   uniqueIdsswipedRight = new Set()
+   uniqueIdsswipedLeft = new Set()
   ngAfterViewInit(): void {
 
 
@@ -52,15 +53,34 @@ export class DashboardComponent implements AfterViewInit,OnDestroy,OnInit {
       //subcriptions
       /////////////
 
-      const userid :string = this.cookieService.get("userid")
-      console.log(userid)
+  
 
     
-      const subs1 = this.loginService.GetListofUser(userid).subscribe(v => this.cards = v as Cards[])
+      const subs1 = this.ApiService.GetListofUser(this.userid).subscribe(v => this.cards = v as Cards[])
 
-      const subs2 = this.formGroup.valueChanges.subscribe(v =>{
+      const subs2 = this.formGroup.valueChanges.pipe(debounceTime(500)).subscribe(v =>{
 
-        v["swipeLeftCards"].map((v:Cards)=> v)
+        v["swipeRightCards"].map((v:Cards)=>{
+          const payload={
+            userId:this.userid,
+            swipeduser:v._id
+          }
+          if (!this.uniqueIdsswipedRight.has(v._id)){
+          this.ApiService.swipeRight(payload)
+          }
+            this.uniqueIdsswipedRight.add(v._id)
+        })
+        v["swipeLeftCards"].map((v:Cards)=>{
+          const payload={
+            userId:this.userid,
+            swipeduser:v._id
+          }
+          if (!this.uniqueIdsswipedLeft.has(v._id)){
+          this.ApiService.swipeLeftt(payload)
+          }
+            this.uniqueIdsswipedLeft.add(v._id)
+        })
+
     
       })
       
@@ -78,10 +98,6 @@ export class DashboardComponent implements AfterViewInit,OnDestroy,OnInit {
   get swipedRightArray () :FormArray{
     return this.formGroup.get('swipeRightCards') as FormArray 
   }
-
-    // swipeLeftCards:Cards[] = [];
-
-    // swipeRightCards: Cards[] = [];
 
   
     drop(event:any) {
@@ -105,7 +121,6 @@ export class DashboardComponent implements AfterViewInit,OnDestroy,OnInit {
       console.log("LeftCardsForm",this.swipedLeftArray.value)
 
     }
-
 
 
   }

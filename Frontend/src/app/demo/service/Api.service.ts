@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 interface tokenfetch{
@@ -18,12 +19,14 @@ export interface Cards{
 // ...
 @Injectable()
 
-export class LoginService {
+export class ApiService {
   token: string | undefined;
 
 constructor(
   private http: HttpClient,
-  private cookieService:CookieService
+  private cookieService:CookieService,
+  private route: ActivatedRoute,
+  private router: Router,
   ) {
     
 
@@ -41,6 +44,10 @@ Register(payload: any){
   });
 
 }
+Logout(){
+  this.cookieService.deleteAll();
+  this.router.navigate(['/'], { relativeTo: this.route });
+}
 
 GetListofUser(id:string):Observable<object> {
 
@@ -51,6 +58,16 @@ GetListofUser(id:string):Observable<object> {
 getCurrentUser(payload:any): Observable<object>{
 
   return this.http.post('http://localhost:8000/api/',payload)
+}
+
+swipeRight(payload:any){
+
+  this.http.post('http://localhost:8000/api/swipeRight',payload).subscribe(v => console.log(v,"firedRight"))
+}
+
+swipeLeftt(payload:any){
+
+  this.http.post('http://localhost:8000/api/swipeLeft',payload).subscribe(v => console.log(v,"firedLeft"))
 }
 
 }

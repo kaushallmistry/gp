@@ -41,20 +41,21 @@ export class TokenInterceptorService implements HttpInterceptor {
         }
       })
       return next.handle(tokenizedReq)
-    }else{
-      console.log("helo")
-        this.tokenService.refreshAccesToken(refreshToken).subscribe((res:any )=>{
+    }
+    // else{
+    //   console.log("helo")
+    //     this.tokenService.refreshAccesToken(refreshToken).subscribe((res:any )=>{
 
-          this.cookieService.set('authToken',res.token)
+    //       this.cookieService.set('authToken',res.token)
 
-          let tokenizedReq = req.clone({
-            setHeaders:{
-              Authorization: `Bearer ${res.token}`}
-            })
+    //       let tokenizedReq = req.clone({
+    //         setHeaders:{
+    //           Authorization: `Bearer ${res.token}`}
+    //         })
           
-          return next.handle(tokenizedReq)
-       })
-      }
+    //       return next.handle(tokenizedReq)
+    //    })
+    //   }
       return next.handle(req)
       
   }

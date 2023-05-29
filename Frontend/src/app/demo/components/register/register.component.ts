@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginService } from '../../service/login.service';
+import { ApiService } from '../../service/Api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -24,7 +24,7 @@ export class RegisterComponent {
   ////////////
 
   constructor(
-    private loginService: LoginService,
+    private loginService: ApiService,
     private route: ActivatedRoute,
     private router: Router,
   ){

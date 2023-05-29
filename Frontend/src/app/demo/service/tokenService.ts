@@ -33,7 +33,7 @@ export class TokenService  {
   }
   ngOnInit(): void {
         
-    interval(7000).subscribe(() => {
+    interval(30000).subscribe(() => {
       this.isExpires();
     });
 
