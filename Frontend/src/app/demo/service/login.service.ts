@@ -29,18 +29,8 @@ constructor(
 
 }
 
-Login(payload:any){
-  this.http.post('http://localhost:8000/api/user/login',payload).subscribe((response:any)=> {
-      // Handle successful response
-      this.token = response.token
-      
-      if(this.token){
-      this.cookieService.set('authToken',this.token);
-      this.cookieService.set('refreshToken',response.refreshToken)
-      this.cookieService.set('userid',response.payload.id)
-      }
-      return console.log(response,this.token);
-    });
+Login(payload:any): Observable<object>{
+  return this.http.post('http://localhost:8000/api/user/login',payload)
 }
 
 Register(payload: any){

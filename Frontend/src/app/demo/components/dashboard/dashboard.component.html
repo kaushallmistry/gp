@@ -8,7 +8,7 @@
        [style.width.%]="33"
         cdkDropList
         #swipeLeftList="cdkDropList"
-        [cdkDropListData]="swipeLeftCards"
+        [cdkDropListData]="swipedLeftArray.value"
         [cdkDropListConnectedTo]="[cardsList]"
         class="example-list"
         (cdkDropListDropped)="drop($event)">
@@ -51,7 +51,7 @@
         [style.width.%]="33"
         cdkDropList
         #swipeRightList="cdkDropList"
-        [cdkDropListData]="swipeRightCards"
+        [cdkDropListData]="swipedRightArray.value"
         [cdkDropListConnectedTo]="[swipeLeftList]"
         class="example-list"
         (cdkDropListDropped)="drop($event)">
