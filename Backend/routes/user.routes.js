@@ -16,7 +16,8 @@ router.get('/user/finduser/:id',findUserById)
 router.delete('/user/deleteuser/:id',deleteUserById)
 router.get('/swipeRight', swipeRight)
 router.get('/gg', passport.authenticate('jwt',{session : false}),createConversation)
-router.get('/listofusers',passport.authenticate('jwt',{session : false}),getAllUsers)
+
+router.get('/listofusers/:id',passport.authenticate('jwt',{session : false}),getAllUsers)
 
 // refresh token route
 router.post('/refresh-token',refreshToken)

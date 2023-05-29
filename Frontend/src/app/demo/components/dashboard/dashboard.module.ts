@@ -10,6 +10,8 @@ import { StyleClassModule } from 'primeng/styleclass';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { DashboardsRoutingModule } from './dashboard-routing.module';
 import { CardModule } from 'primeng/card';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
     imports: [
@@ -23,6 +25,8 @@ import { CardModule } from 'primeng/card';
         PanelMenuModule,
         ButtonModule,
         DashboardsRoutingModule,
+        DragDropModule,
+        FlexLayoutModule
     ],
     declarations: [DashboardComponent],
 })

@@ -35,7 +35,7 @@ import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { TokenInterceptorService } from './demo/service/token-interceptor.service';
 import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from './demo/service/tokenService';
-
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 
@@ -64,6 +64,7 @@ import { TokenService } from './demo/service/tokenService';
         ToolbarModule,
         DialogModule,
         FlexLayoutModule,
+        DragDropModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },

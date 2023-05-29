@@ -2,19 +2,21 @@ import jwt from "jsonwebtoken";
 import Profile from "../models/register.js";
 export const login = async (req, res) => {
     try {
+        /// login logic shiit need to fix
         const {email, password} = req.body;
         const user = await Profile.findOne({ email });
         if (user) {
             const pay_load = {
                 email : user.email,
-                id : user.id
+                id : user._id
             }
                 const token = jwt.sign(pay_load, "secret", { expiresIn: '2m' })
                 const refreshToken = jwt.sign(pay_load, "refreshsecret", { expiresIn: '7d' })     
                 res.status(200).json({
-                    message : `LOGGED IN SUCCESSFULLY | TOKEN DURATION - 1 H`,
+                    message : `LOGGED IN SUCCESSFULLY | TOKEN DURATION - 2m`,
                     token:token,
                     refreshToken:refreshToken,
+                    payload:pay_load,
                 })
      
         }else{
@@ -116,15 +118,16 @@ export const deleteUserById = async (req, res) =>{
 
 }
 export const getAllUsers = async (req, res) =>{
-    const userId = req.params.id
-
-    const status =  await Profile.find()
-
-    if(status){
+    const userIds = [req.params.id]
+    
+    const status =  await Profile.find({ _id: { $nin: userIds }})
+    console.log(status)
+    if(status){ 
         res.status(200).json(status);
+            
     }
     else{
-        res.status(400).json({ error: 'Failed to Delete User' });
+        res.status(400).json({ error: 'Failed to get users' });
     }
 
 }

@@ -1,14 +1,65 @@
 <router-outlet></router-outlet>
 
-<div class="tbgwrap">
-    <p-card (click)="onclick()"> HELLO</p-card>
-    <div class="tcontrols">
-        <div (click)="cardAnimation('swipeleft')" class="tno">
-            <i class="fa fa-times" aria-hidden="true"></i>
-        </div>
-        <div class="ti"><i class="fa fa-info" aria-hidden="true"></i></div>
-        <div (click)="cardAnimation('swiperight')" class="tyes">
-            <i class="fa fa-heart" aria-hidden="true"></i>
-        </div>
+<div style="width:100%" fxLayout="column" fxLayoutGap="20px">
+
+  <div fxLayout="row" style="width:100%" fxLayoutGap="20px">
+
+    <div  fxLayout="column"
+       [style.width.%]="33"
+        cdkDropList
+        #swipeLeftList="cdkDropList"
+        [cdkDropListData]="swipeLeftCards"
+        [cdkDropListConnectedTo]="[cardsList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+       
     </div>
+    
+      <br/>
+
+      <div
+        fxLayout="column"
+        [style.width.%]="33"
+        style="height:500px"
+        cdkDropList
+        #cardsList="cdkDropList"
+        [cdkDropListData]="cards"
+        [cdkDropListConnectedTo]="[swipeRightList,swipeLeftList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <!-- <div class="example-box"  cdkDrag>{{item}}</div> -->
+           <div class="card-container" *ngFor="let item of cards" cdkDrag>
+            <p-card>
+              <img src="https://wallpaperaccess.com/full/3037908.jpg" alt="Profile Picture" class="profile-picture" />
+              <h2 class="profile-name">{{item.username}}</h2>
+              <div class="profile-details">
+                <p><i class="pi pi-map-marker"></i> {{item.bio}}</p>
+                <p><i class="pi pi-envelope"></i> {{item.email}}</p>
+              </div>
+              <div class="profile-buttons">
+                <button pButton type="button" label="Like" icon="pi pi-check" class="p-button-success"></button>
+                <button pButton type="button" label="Dislike" icon="pi pi-times" class="p-button-danger"></button>
+              </div>
+            </p-card>
+          </div>
+      </div>
+      
+      <br/>
+
+      <div
+        fxLayout="column"
+        [style.width.%]="33"
+        cdkDropList
+        #swipeRightList="cdkDropList"
+        [cdkDropListData]="swipeRightCards"
+        [cdkDropListConnectedTo]="[swipeLeftList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <!-- <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div> -->
+      </div> 
+  </div>
+  
+
 </div>
+    
+

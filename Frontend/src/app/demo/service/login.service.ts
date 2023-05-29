@@ -6,6 +6,15 @@ interface tokenfetch{
   message:string,
   token: string
 }
+
+export interface Cards{
+  id:string,
+  username:string,
+  email:string,
+  bio:string,
+  avatar:string,
+  games:string[]
+}
 // ...
 @Injectable()
 
@@ -28,6 +37,7 @@ Login(payload:any){
       if(this.token){
       this.cookieService.set('authToken',this.token);
       this.cookieService.set('refreshToken',response.refreshToken)
+      this.cookieService.set('userid',response.payload.id)
       }
       return console.log(response,this.token);
     });
@@ -42,12 +52,15 @@ Register(payload: any){
 
 }
 
-GetListofUser() {
+GetListofUser(id:string):Observable<object> {
 
-  this.http.get('http://localhost:8000/api/listofusers').subscribe((res)=>{
+ return this.http.get(`http://localhost:8000/api/listofusers/${id}`)
+ 
+ 
+}
+getCurrentUser(payload:any): Observable<object>{
 
-  return console.log(res)
-  })
+  return this.http.post('http://localhost:8000/api/',payload)
 }
 
 }

@@ -19,7 +19,6 @@ export class TokenService  {
     {}
 
   isExpires(){
-    console.log("isExpires fun")
     const helper = new JwtHelperService();
     let access_token = this.cookieService.get('authToken')
     if(access_token){
@@ -29,7 +28,6 @@ export class TokenService  {
       this.isExpiredToken.next(isExpired)
     }
     else{
-      console.log("token not Found")
       this.isExpiredToken.next(true)
     }
   }
