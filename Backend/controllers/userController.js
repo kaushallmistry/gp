@@ -118,16 +118,29 @@ export const deleteUserById = async (req, res) =>{
 
 }
 export const getAllUsers = async (req, res) =>{
-    const userIds = [req.params.id]
+
+    const  userData = req.user
+    console.log(userData)
+    let ignoreUsers = [];
+    if(userData.swipedLeft.length > 0) userData.swipedLeft.forEach(v => ignoreUsers.push(v)) 
+    if(userData.matchedUsers.length > 0 )  userData.matchedUsers.forEach(v => ignoreUsers.push(v)) 
+    if (userData.swipedRight.length > 0) userData.swipedRight.forEach(v => ignoreUsers.push(v)) 
+   
+    ignoreUsers.push(userData._id.toString())
     
-    const status =  await Profile.find({ _id: { $nin: userIds }})
-    console.log(status)
-    if(status){ 
-        res.status(200).json(status);
-            
+    if(ignoreUsers.length > 0){
+    const status =  await Profile.find({ _id: { $nin: ignoreUsers }})
+
+        if(status){ 
+            res.status(200).json(status);
+                
+        }
+        else{
+            res.status(400).json({ error: 'Failed to get users' });
+        }
     }
     else{
-        res.status(400).json({ error: 'Failed to get users' });
+        res.status(500).json({error:"paylod error"})
     }
 
 }

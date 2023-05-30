@@ -2,7 +2,9 @@ import express from "express";
 import { login,register,updateUserById,findUserById,deleteUserById,getAllUsers,refreshToken} from "../controllers/userController.js";
 import {swipeRight,swipeLeft} from "../controllers/swipeController.js"
 import passport from "passport";
-import { createConversation } from "../controllers/conversationController.js";
+import { fetchConversation } from "../controllers/conversationController.js";
+import { Sendmessage, retriveConvs } from "../controllers/chats.js";
+
 
 
 const router = express.Router();
@@ -19,10 +21,18 @@ router.post('/swipeRight', passport.authenticate('jwt',{session : false}), swipe
 
 router.post('/swipeLeft', passport.authenticate('jwt',{session : false}), swipeLeft)
 
-router.get('/gg', passport.authenticate('jwt',{session : false}),createConversation)
-
 router.get('/listofusers/:id',passport.authenticate('jwt',{session : false}),getAllUsers)
 
-// refresh token route
+// fetch convs
+router.get('/conversations/:id',fetchConversation)
+
+// refresh tokens
 router.post('/refresh-token',refreshToken)
+
+//retrive convs
+router.get('/getconvs/:id',retriveConvs)
+
+//post messages
+router.post('/send-message',Sendmessage)
+
 export default router
