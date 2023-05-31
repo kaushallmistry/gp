@@ -3,7 +3,7 @@ import { login,register,updateUserById,findUserById,deleteUserById,getAllUsers,r
 import {swipeRight,swipeLeft} from "../controllers/swipeController.js"
 import passport from "passport";
 import { fetchConversation } from "../controllers/conversationController.js";
-import {retriveConvs} from "../controllers/chats.js"
+import {retriveConvs,Sendmessage} from "../controllers/chats.js"
 
 
 
@@ -32,4 +32,8 @@ router.post('/refresh-token',refreshToken)
 
 // chats retrive
 router.get('/messages/:id',retriveConvs)
+
+// post message
+router.get('/send-messages/:id',Sendmessage)
+
 export default router

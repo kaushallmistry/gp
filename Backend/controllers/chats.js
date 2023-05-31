@@ -18,7 +18,9 @@ export const retriveConvs = async (req,res)=>{
     }
 } 
 
-//// posting a message
+////////////////////
+// posting a message
+////////////////////
 
 export const Sendmessage = async (req,res)=>{
 
@@ -45,4 +47,4 @@ export const Sendmessage = async (req,res)=>{
     }
 
 
-} 
+}
