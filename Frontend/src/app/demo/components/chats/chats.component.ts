@@ -17,6 +17,7 @@ export class ChatsComponent {
   chatHeight = '400px';
   user_name!: string;
 
+  messagesSource : any [] = [];
   messageControl = new FormControl('',[Validators.required]);
 
   subs: Subscription = new Subscription();
@@ -40,6 +41,8 @@ export class ChatsComponent {
 
   ngAfterViewInit() {
 
+    console.log("helo")
+
     const id = this.userid;
 
     const subs1 = this.ApiService.getCurrentUser(id).subscribe((v)=> {
@@ -47,8 +50,11 @@ export class ChatsComponent {
       this.user_name = v.username
 
     })
+    const subs2 = this.ApiService.messagesRetrive(this.room_id).subscribe(v => this.messagesSource = v)
+    console.log(this.messagesSource)
 
     this.subs.add(subs1)
+    this.subs.add(subs2)
   }
 
   onMobile(): boolean {

@@ -70,4 +70,9 @@ swipeLeftt(payload:any){
   this.http.post('http://localhost:8000/api/swipeLeft',payload).subscribe(v => console.log(v,"firedLeft"))
 }
 
+messagesRetrive(id:string):Observable<any>{
+
+  return this.http.get(`http://localhost:8000/api/messages/${id}`)
+}
+
 }
