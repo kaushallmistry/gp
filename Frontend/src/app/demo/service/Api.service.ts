@@ -55,9 +55,9 @@ GetListofUser(id:string):Observable<object> {
  
  
 }
-getCurrentUser(payload:any): Observable<object>{
+getCurrentUser(id:string): Observable<object>{
 
-  return this.http.post('http://localhost:8000/api/',payload)
+  return this.http.get(`http://localhost:8000/api/user/finduser/${id}`)
 }
 
 swipeRight(payload:any){
