@@ -4,6 +4,7 @@ import { NotfoundComponent } from './demo/components/notfound/notfound.component
 import { AppLayoutComponent } from './layout/app.layout.component';
 import { LandingComponent } from './demo/components/landing/landing.component';
 import { RegisterComponent } from './demo/components/register/register.component';
+import { ChatsComponent } from './demo/components/chats/chats.component';
 
 @NgModule({
     imports: [
@@ -28,6 +29,11 @@ import { RegisterComponent } from './demo/components/register/register.component
                                     './demo/components/dashboard/dashboard.module'
                                 ).then((m) => m.DashboardModule),
                         },
+                        {
+                            path: 'conv/:id',
+                            component:ChatsComponent
+                        },
+
                     ],
                 },
                 {

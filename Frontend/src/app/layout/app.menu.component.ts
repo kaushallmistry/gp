@@ -12,7 +12,9 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AppMenuComponent implements AfterViewInit,OnDestroy {
     model: any[] = [];
-    converstions: any[] = [];
+    converstions: any[] = [{
+        items:[]
+    }];
 
     subs = new Subscription()
 
@@ -20,9 +22,11 @@ export class AppMenuComponent implements AfterViewInit,OnDestroy {
         public layoutService: LayoutService,
         private chatsService: ChatsService,
         private cookieService:CookieService
-    ) {}
+    ) {
+        
+    }
     ngOnDestroy(): void {
-      this.subs.unsubscribe()
+      this.subs.unsubscribe();
     }
     get userid():string{
         return this.cookieService.get("userid")
@@ -30,23 +34,39 @@ export class AppMenuComponent implements AfterViewInit,OnDestroy {
     
     ngAfterViewInit(): void {
         
-        const subs1 = this.chatsService.getConvs(this.userid).subscribe((v)=>console.log(v))
+        const subs1 = this.chatsService.getConvs(this.userid).subscribe((v:any)=>{
+            console.log(v);
+            const items:any[]=[];
+            v.forEach((v: { members: any[]; })=> {
+               items.push({
+                    icon: "pi pi-fw pi-home",
+                    label:v.members[0] === this.userid? v.members[1]: v.members[0],
+                    routerLink:[`conv/${v.members[0]}`]
+                })
+            })
+             this.converstions[0]['items']=items;
+
+            console.log(this.converstions)
+            console.log(this.model)
+        })
         
         
+        this.model = [
+            {
+                items: [
+                    {
+                        label: 'Dashboard',
+                        icon: 'pi pi-fw pi-home',
+                        routerLink: ['/dashboard'],
+                    },
+                    
+                ],
+            },
+        ];
+
+        this.subs.add(subs1);
     }
     
-    // this.model = [
-    //     {
-    //         items: [
-    //             {
-    //                 label: 'Dashboard',
-    //                 icon: 'pi pi-fw pi-home',
-    //                 routerLink: ['/dashboard'],
-    //             },
-                
-    //         ],
-    //     },
-    // ];
 
 
 

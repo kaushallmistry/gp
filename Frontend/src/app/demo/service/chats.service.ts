@@ -10,6 +10,6 @@ export class ChatsService {
   constructor(private http: HttpClient) { }
 
   getConvs(userid:string): Observable<object>{
-    return this.http.get(`http://localhost:8000/api/getconvs/${userid}`)
+    return this.http.get(`http://localhost:8000/api/conversations/${userid}`)
   }
 }

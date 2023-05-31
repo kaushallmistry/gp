@@ -36,11 +36,12 @@ import { TokenInterceptorService } from './demo/service/token-interceptor.servic
 import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from './demo/service/tokenService';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { ChatsComponent } from './demo/components/chats/chats.component';
 
 
 
 @NgModule({
-    declarations: [AppComponent, NotfoundComponent, SwipeComponent,LandingComponent,LoginComponent, RegisterComponent],
+    declarations: [AppComponent, NotfoundComponent, SwipeComponent,LandingComponent,LoginComponent, RegisterComponent, ChatsComponent],
     imports: [
         CardModule,
         TabViewModule,
@@ -64,7 +65,9 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
         ToolbarModule,
         DialogModule,
         FlexLayoutModule,
-        DragDropModule
+        DragDropModule,
+        BrowserModule,
+        ButtonModule,
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },

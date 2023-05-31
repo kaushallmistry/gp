@@ -1,9 +1,9 @@
 import express from "express";
-import { login,register,updateUserById,findUserById,deleteUserById,getAllUsers,refreshToken} from "../controllers/userController.js";
+import { login,register,updateUserById,findUserById,deleteUserById,getAllUsers,refreshToken} from "../controllers/userController.js"
 import {swipeRight,swipeLeft} from "../controllers/swipeController.js"
 import passport from "passport";
 import { fetchConversation } from "../controllers/conversationController.js";
-import { Sendmessage, retriveConvs } from "../controllers/chats.js";
+import {retriveConvs} from "../controllers/chats.js"
 
 
 
@@ -23,16 +23,13 @@ router.post('/swipeLeft', passport.authenticate('jwt',{session : false}), swipeL
 
 router.get('/listofusers/:id',passport.authenticate('jwt',{session : false}),getAllUsers)
 
-// fetch convs
+// fetch cons
+
 router.get('/conversations/:id',fetchConversation)
 
-// refresh tokens
+// refresh token route
 router.post('/refresh-token',refreshToken)
 
-//retrive convs
-router.get('/getconvs/:id',retriveConvs)
-
-//post messages
-router.post('/send-message',Sendmessage)
-
+// chats retrive
+router.get('/messages/:id',retriveConvs)
 export default router
