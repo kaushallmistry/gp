@@ -1,21 +1,21 @@
-<p>chats works!</p>
-<div class="chat-container">
-  <div class="chat-header">
-    Tinder Chat
-  </div>
-  <div class="chat-messages">
-    <div class="chat-message received">
-      <p>Hello!</p>
+<div fxLayout="column" fxLayoutAlign="center center" fxFlex="100%">
+
+  <mat-card class="mat-card">
+    <div fxLayout="column-reverse" *ngIf="userid" fxFlex="100%" fxLayoutAlign="space-between" style="overflow: auto;">
+      <div fxLayout="column">
+        <div *ngFor="let m of messages" fxLayout="column">
+          <span class="head">{{user_name}}</span>
+          <div class="chat-bubble">
+            <p class="message">{{ m.detail }}</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="chat-message sent">
-      <p>Hi there!</p>
-    </div>
-    <div class="chat-message received">
-      <p>How are you?</p>
-    </div>
+  </mat-card>
+
+  <div class="chat-input" style="padding: 10px;" [style.width.vh]="onMobile() ? '50' : '110'" fxLayout ="center center">
+    <input [formControl]="messageControl" type="text" placeholder="Type your message...">
+    <button [disabled]="btnDisabled()" (click)="sendMessage()">Send</button>
   </div>
-  <div class="chat-input">
-    <input type="text" placeholder="Type your message...">
-    <button>Send</button>
-  </div>
+  
 </div>

@@ -37,6 +37,10 @@ import { CookieService } from 'ngx-cookie-service';
 import { TokenService } from './demo/service/tokenService';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { ChatsComponent } from './demo/components/chats/chats.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 
 
 
@@ -68,6 +72,10 @@ import { ChatsComponent } from './demo/components/chats/chats.component';
         DragDropModule,
         BrowserModule,
         ButtonModule,
+        MatFormFieldModule,
+        MatCardModule,
+        MatInputModule,
+        MatButtonModule,
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
