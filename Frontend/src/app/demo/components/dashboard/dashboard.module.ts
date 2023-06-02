@@ -12,7 +12,7 @@ import { DashboardsRoutingModule } from './dashboard-routing.module';
 import { CardModule } from 'primeng/card';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { ProgressBarModule } from 'primeng/progressbar';
 @NgModule({
     imports: [
         CardModule,
@@ -26,7 +26,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
         ButtonModule,
         DashboardsRoutingModule,
         DragDropModule,
-        FlexLayoutModule
+        FlexLayoutModule,
+        ProgressBarModule
     ],
     declarations: [DashboardComponent],
 })

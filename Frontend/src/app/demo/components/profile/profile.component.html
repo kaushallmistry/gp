@@ -1,0 +1,73 @@
+<div class="p-card" style="width:100%" fxLayout="column" style="padding:50px">
+    <h1>Edit Profile....</h1>
+    <mat-divider></mat-divider>
+    <!-- <div class="card flex justify-content-center">
+        <p-knob [(ngModel)="20" [size]="200"></p-knob>
+    </div> -->
+    <div [fxLayout]="onMobile ? 'column':'row'" style="width:100%" fxLayoutGap="20px">
+
+        <mat-form-field [style.width.%]="onMobile ? '100':'50'">
+            <mat-label>Username</mat-label>
+            <input matInput>
+        </mat-form-field>
+
+        <mat-form-field [style.width.%]="onMobile ? '100':'50'">
+            <mat-label>Email</mat-label>
+            <input matInput readonly>
+        </mat-form-field>
+
+    </div>
+    <div [fxLayout]="onMobile ? 'column':'row'" style="width:100%" fxLayoutGap="20px">
+
+        <mat-form-field [style.width.%]="onMobile ? '100':'50'">
+            <mat-label>bio</mat-label>
+            <input matInput>
+        </mat-form-field>
+
+        <mat-form-field [style.width.%]="onMobile ? '100':'50'">
+            <mat-label>Description</mat-label>
+            <input matInput>
+        </mat-form-field>
+
+    </div>     
+
+    <mat-form-field class="example-chip-list" fxLayout="column" style="width:100%">
+        <mat-label>Favorite Games</mat-label>
+        <mat-chip-grid #chipGrid aria-label="Enter Games">
+            <mat-chip-row *ngFor="let fruit of fruits"
+                        (removed)="remove(fruit)"
+                        [editable]="true"
+                        [aria-description]="'press enter to edit ' + fruit.name">
+            {{fruit.name}}
+            <button matChipRemove [attr.aria-label]="'remove ' + fruit.name">
+                <mat-icon svg-icon="cancel"></mat-icon>
+            </button>
+            </mat-chip-row>
+            <input placeholder="Enter games"
+                    [matChipInputFor]="chipGrid"
+                    (matChipInputTokenEnd)="add($event)"/>
+        </mat-chip-grid>
+    </mat-form-field>
+
+
+    <!-- <mat-form-field>
+        <mat-label>Select a Banner</mat-label>
+        <mat-select [(value)]="selected">
+          <mat-option>None</mat-option>
+          <mat-option value="option1">Option 1</mat-option>
+          <mat-option value="option2">Option 2</mat-option>
+          <mat-option value="option3">Option 3</mat-option>
+        </mat-select>
+    </mat-form-field> -->
+    
+    <mat-grid-list cols="4" rowHeight="2:1">
+        <mat-grid-tile *ngFor="let src gamesData" >
+            {{gamesData|json}}
+            <img [src]="src.thumbnail" style="width:100%"/>
+                <span fxLAyoutAlign="center center">{{src.title}}</span>
+        </mat-grid-tile>
+      
+    </mat-grid-list>
+
+
+</div>

@@ -56,16 +56,13 @@ export class AppMenuComponent implements AfterViewInit,OnDestroy {
             const items:any[]=[];
             this.membersData?.conservations.forEach((v: { members: any[], _id: string })=> {
                items.push({
-                    icon: "pi pi-fw pi-home",
+                    icon: "pi pi-fw pi-user",
                     label:this.membersData?.memberProfiles.find(y=>(v.members[0] === this.userid? v.members[1]: v.members[0]) === y._id)?.username,
                     routerLink:[`conv/${v._id}`]
                 })
             })
             
              this.converstions[0]['items']=items;
-
-            console.log(this.converstions)
-            console.log(this.model)
         })
         
         

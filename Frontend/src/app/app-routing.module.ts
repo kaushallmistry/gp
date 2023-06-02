@@ -5,6 +5,7 @@ import { AppLayoutComponent } from './layout/app.layout.component';
 import { LandingComponent } from './demo/components/landing/landing.component';
 import { RegisterComponent } from './demo/components/register/register.component';
 import { ChatsComponent } from './demo/components/chats/chats.component';
+import { ProfileComponent } from './demo/components/profile/profile.component';
 
 @NgModule({
     imports: [
@@ -32,6 +33,10 @@ import { ChatsComponent } from './demo/components/chats/chats.component';
                         {
                             path: 'conv/:id',
                             component:ChatsComponent
+                        },
+                        {
+                            path: 'profile/:id',
+                            component:ProfileComponent
                         },
 
                     ],

@@ -1,5 +1,5 @@
 import Messages from "../models/messages.js";
-
+import Profile from "../models/register.js"
 /// retriving Chats
 
 export const retriveConvs = async (req,res)=>{
@@ -24,27 +24,21 @@ export const retriveConvs = async (req,res)=>{
 
 export const Sendmessage = async (req,res)=>{
 
-    const payload = req.body
+    const {conversationId,sender,text} = req.body;
 
-    if(payload){
-
-        const newMessages = new Messages({
-            conversationId: payload.conversationId,
-            sender:payload.sender,
-            text:payload.text
-        });
-
-        const messageSaved = await newMessages.save()
-
-        if(messageSaved){
-            res.status(200).json("Done")
-        }else{
-            res.status(400).json("Something went wrong")
-        }
-
-    }else{
-        res.status(400).json("i think its past yous mistake")
+    console.log(req.body)
+    const addData = await Messages.create({
+        conversationId:conversationId,
+        sender:sender,
+        text:text
+    })
+    if(addData){
+    res.status(201).send(addData)
     }
+    else{
+        res.status(400).json("Something went wrong")
+    }
+
 
 
 }

@@ -34,6 +34,6 @@ router.post('/refresh-token',refreshToken)
 router.get('/messages/:id',retriveConvs)
 
 // post message
-router.get('/send-messages/:id',Sendmessage)
+router.post('/send-messages',Sendmessage)
 
 export default router

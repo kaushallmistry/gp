@@ -12,4 +12,9 @@ export class ChatsService {
   getConvs(userid:string): Observable<any>{
     return this.http.get(`http://localhost:8000/api/conversations/${userid}`)
   }
+
+  getSendMessage(payload: any): Observable<any>{
+    console.log(payload)
+    return this.http.post('http://localhost:8000/api/send-messages',payload)
+  }
 }

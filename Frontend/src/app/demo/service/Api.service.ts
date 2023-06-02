@@ -60,6 +60,11 @@ getCurrentUser(id:string): Observable<any>{
   return this.http.get(`http://localhost:8000/api/user/finduser/${id}`)
 }
 
+getcurruser():Observable<any>{
+  const id = this.cookieService.get('userid')
+  return this.http.get(`http://localhost:8000/api/user/finduser/${id}`)
+}
+
 swipeRight(payload:any){
 
   this.http.post('http://localhost:8000/api/swipeRight',payload).subscribe(v => console.log(v,"firedRight"))

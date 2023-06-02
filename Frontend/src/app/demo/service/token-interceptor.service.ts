@@ -24,6 +24,9 @@ export class TokenInterceptorService implements HttpInterceptor {
     const Token =this.cookieService.get('authToken')
     const refreshToken = this.cookieService.get('refreshToken')
     const jwthelper = new JwtHelperService()
+    if(req.url.endsWith("category=shooter")){
+      return next.handle(req)
+    }
       if(req.url.endsWith("refresh-token")){
        
         

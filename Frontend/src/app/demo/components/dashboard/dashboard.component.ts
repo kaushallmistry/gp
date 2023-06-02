@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { ApiService } from '../../service/Api.service';
 import {  moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Subscription, debounce, debounceTime } from 'rxjs';
+import { Subscription, debounce, debounceTime, tap } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { TokenService } from '../../service/tokenService';
@@ -34,6 +34,8 @@ export class DashboardComponent implements AfterViewInit,OnDestroy,OnInit {
         ){
         
     }
+
+    trigger=false;
   ngOnInit(): void {
  
     this.formGroup = new FormGroup({
@@ -60,6 +62,7 @@ export class DashboardComponent implements AfterViewInit,OnDestroy,OnInit {
 
       const subs2 = this.formGroup.valueChanges.pipe(debounceTime(500)).subscribe(v =>{
 
+
         v["swipeRightCards"].map((v:Cards)=>{
           const payload={
             userId:this.userid,
@@ -81,7 +84,7 @@ export class DashboardComponent implements AfterViewInit,OnDestroy,OnInit {
             this.uniqueIdsswipedLeft.add(v._id)
         })
 
-    
+        this.trigger=false;
       })
       
       this.subs.add(subs1);
@@ -102,7 +105,7 @@ export class DashboardComponent implements AfterViewInit,OnDestroy,OnInit {
   
     drop(event:any) {
         console.log(event)
-        
+        this.trigger=true
   
       if (event.previousContainer === event.container) {
        

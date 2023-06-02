@@ -13,7 +13,7 @@ import { NodeService } from './demo/service/node.service';
 import { PhotoService } from './demo/service/photo.service';
 
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { DialogModule } from 'primeng/dialog';
 import { PasswordModule } from 'primeng/password';
 import { ToggleButtonModule } from 'primeng/togglebutton';
@@ -41,11 +41,14 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-
-
-
+import { ProfileComponent } from './demo/components/profile/profile.component';
+import {MatDividerModule} from '@angular/material/divider';
+import { KnobModule } from 'primeng/knob';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
+import {MatGridListModule} from '@angular/material/grid-list';
 @NgModule({
-    declarations: [AppComponent, NotfoundComponent, SwipeComponent,LandingComponent,LoginComponent, RegisterComponent, ChatsComponent],
+    declarations: [AppComponent, NotfoundComponent, SwipeComponent,LandingComponent,LoginComponent, RegisterComponent, ChatsComponent, ProfileComponent],
     imports: [
         CardModule,
         TabViewModule,
@@ -76,6 +79,11 @@ import {MatButtonModule} from '@angular/material/button';
         MatCardModule,
         MatInputModule,
         MatButtonModule,
+        MatDividerModule,
+        KnobModule,
+        MatChipsModule,
+        MatIconModule,
+        MatGridListModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
@@ -100,13 +108,6 @@ import {MatButtonModule} from '@angular/material/button';
 })
 export class AppModule  {
 
-    constructor(
-    private cookieService: CookieService,
-    private http: HttpClient,
-    private tokenService:TokenService
-    ){}
-    
-    
-  
+
 
 }

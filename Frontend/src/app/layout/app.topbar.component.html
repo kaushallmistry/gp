@@ -27,9 +27,9 @@
                 layoutService.state.profileSidebarVisible
         }"
     >
+        <span class="align-items-center" style="margin-top: 10px;">{{userDoc?.username}}</span>
         <button class="p-link layout-topbar-button">
-            <i class="pi pi-user"></i>
-            <span>Profile</span>
+            <i class="pi pi-user" (click)="navigateToProfile()"></i>
         </button>
         <button class="p-link layout-topbar-button" (click)="Logout()">
             <i class="pi pi-sign-out"></i>

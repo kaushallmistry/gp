@@ -1,5 +1,7 @@
 <router-outlet></router-outlet>
 
+  <p-progressBar mode="indeterminate" *ngIf="trigger" [style]="{'height': '6px','position':'relative','top': '-35px', 'z-index':'1000'}"></p-progressBar>
+
 <div style="width:100%" fxLayout="column" fxLayoutGap="20px">
 
   <div fxLayout="row" style="width:100%" fxLayoutGap="20px">
@@ -12,7 +14,7 @@
         [cdkDropListConnectedTo]="[cardsList]"
         class="example-list"
         (cdkDropListDropped)="drop($event)">
-       
+        
     </div>
     
       <br/>
