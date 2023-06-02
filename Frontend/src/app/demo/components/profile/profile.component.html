@@ -1,3 +1,4 @@
+<p-progressBar mode="indeterminate" *ngIf="trigger" [style]="{'height': '6px','position':'relative','top': '-35px', 'z-index':'1000'}"></p-progressBar>
 <mat-tab-group>
     <mat-tab label="Profile" style="background: cornflowerblue;">
  
@@ -6,7 +7,7 @@
             <div fxLayout="row" fxLayoutAlign="space-between start">
                 <h1>Edit Profile....</h1>
  
-                <button mat-raised-button color="primary" (click)="onSave()">Save</button>
+                <button mat-raised-button color="primary" (click)="onSave()" [disabled]="trigger">Save</button>
             </div>
  
             <mat-divider></mat-divider>

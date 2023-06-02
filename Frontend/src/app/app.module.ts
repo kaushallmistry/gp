@@ -48,6 +48,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTabsModule} from '@angular/material/tabs';
+import { ProgressBarModule } from 'primeng/progressbar';
 @NgModule({
     declarations: [AppComponent, NotfoundComponent, SwipeComponent,LandingComponent,LoginComponent, RegisterComponent, ChatsComponent, ProfileComponent],
     imports: [
@@ -85,7 +86,8 @@ import {MatTabsModule} from '@angular/material/tabs';
         MatChipsModule,
         MatIconModule,
         MatGridListModule,
-        MatTabsModule
+        MatTabsModule,
+        ProgressBarModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },

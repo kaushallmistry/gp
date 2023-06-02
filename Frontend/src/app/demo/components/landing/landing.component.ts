@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
+import { ApiService } from '../../service/Api.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-landing',
@@ -11,14 +13,19 @@ export class LandingComponent {
 
     showContent: boolean = false;
     visible: boolean = false;
+    subs = new Subscription()
+    constructor(public layoutService: LayoutService, public router: Router,private ApiService: ApiService) {}
 
-    constructor(public layoutService: LayoutService, public router: Router) {}
-
+    registeredcount="";
 
     ngAfterViewInit(): void {
         setTimeout(() => {
           this.showContent = true;
         }, 1500);
+        
+        // const subs1 = this.ApiService.GetListofUser("").subscribe(v=>console.log(v))
+
+        // this.subs.add(subs1);
       }
 
     ////////////////////

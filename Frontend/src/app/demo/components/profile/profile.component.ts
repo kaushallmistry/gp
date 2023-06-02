@@ -25,6 +25,8 @@ export interface Profile{
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements AfterViewInit, OnDestroy {
+
+  trigger=false;
  
   gamesData:{title:string; thumbnail:string; id:string}[]=[];
  
@@ -150,6 +152,7 @@ export class ProfileComponent implements AfterViewInit, OnDestroy {
   }
  
   onSave(){
+    this.trigger=true;
     const formGroupValue = this.formGroup.value;
       
     const paylaod:Profile ={
@@ -162,7 +165,7 @@ export class ProfileComponent implements AfterViewInit, OnDestroy {
       reactionTime:formGroupValue.reactionTime
     }
     console.log(paylaod);
-    const subs1 = this.ApiService.updateUserById(paylaod).subscribe(v => console.log(v))
+    const subs1 = this.ApiService.updateUserById(paylaod).subscribe(v => {console.log(v); this.trigger=false})
 
     this.subs.add(subs1)
    
