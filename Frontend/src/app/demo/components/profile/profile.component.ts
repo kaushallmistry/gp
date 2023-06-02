@@ -15,6 +15,8 @@ export class ProfileComponent implements AfterViewInit, OnDestroy {
 
   gamesData:{title:string; thumbnail:string; id:string}[]=[];
 
+  selectedItem: any;
+
   subs = new Subscription()
   constructor(private gamesApiService:GamesApiService){
 
@@ -35,10 +37,10 @@ export class ProfileComponent implements AfterViewInit, OnDestroy {
   }
 
   formGroup = new FormGroup({
-    username: new FormControl( [Validators.required]),
-    bio: new FormControl([Validators.required]),
-    games: new FormControl([]),
-    avater: new FormControl([])
+    username: new FormControl(null, [Validators.required]),
+    bio: new FormControl(null,[Validators.required]),
+    games: new FormControl(null,[]),
+    avater: new FormControl(null,[])
   })
 
   ngAfterViewInit(): void {
@@ -51,6 +53,14 @@ export class ProfileComponent implements AfterViewInit, OnDestroy {
 
   }
 
+  getSelectedItem(item: any) {
+    this.selectedItem = item;
+    const selectedItem = item.thumbnail;
+    console.log("Selected item: ", item?.thumbnail);
+    this.formGroup.patchValue({
+        avater: selectedItem
+    });
+}
 
 
   fruits: Fruit[] = [];
