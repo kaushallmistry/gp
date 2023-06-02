@@ -13,7 +13,7 @@ export interface Fruit {
 })
 export class ProfileComponent implements AfterViewInit, OnDestroy {
 
-  gamesData=[];
+  gamesData:{title:string; thumbnail:string; id:string}[]=[];
 
   subs = new Subscription()
   constructor(private gamesApiService:GamesApiService){
@@ -43,11 +43,12 @@ export class ProfileComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
 
-    const subs1= this.gamesApiService.RetriveImages().subscribe(v => {this.gamesData = v.slice(0, 20);})
+    const subs1= this.gamesApiService.RetriveImages().subscribe(v => {this.gamesData = v.slice(0, 20);
+      console.log(this.gamesData)
+    })
 
     this.subs.add(subs1)
 
-  
   }
 
 

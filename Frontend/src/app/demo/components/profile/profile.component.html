@@ -48,26 +48,24 @@
                     (matChipInputTokenEnd)="add($event)"/>
         </mat-chip-grid>
     </mat-form-field>
-
-
-    <!-- <mat-form-field>
-        <mat-label>Select a Banner</mat-label>
-        <mat-select [(value)]="selected">
-          <mat-option>None</mat-option>
-          <mat-option value="option1">Option 1</mat-option>
-          <mat-option value="option2">Option 2</mat-option>
-          <mat-option value="option3">Option 3</mat-option>
-        </mat-select>
-    </mat-form-field> -->
     
-    <mat-grid-list cols="4" rowHeight="2:1">
-        <mat-grid-tile *ngFor="let src gamesData" >
-            {{gamesData|json}}
-            <img [src]="src.thumbnail" style="width:100%"/>
-                <span fxLAyoutAlign="center center">{{src.title}}</span>
-        </mat-grid-tile>
-      
-    </mat-grid-list>
+        <div style="width:100%">
+           <h1> Select Your Banner</h1>
+            
+            <mat-grid-list cols="4" rowHeight="1:1">
 
+                <mat-grid-tile *ngFor="let item of gamesData"  fxLayoutGap="10px">
+                    
+                    <div fxLayout="column" >
+                        <img [src]="item?.thumbnail" style="width:80%"/>
+                        <span fxLAyoutAlign="center center" fxLayout="row" style="width:100%">{{item.title}}</span>
+                    </div>
+
+                </mat-grid-tile>
+
+            </mat-grid-list>
+
+
+        </div>
 
 </div>
