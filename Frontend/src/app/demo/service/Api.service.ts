@@ -8,8 +8,8 @@ interface tokenfetch{
   token: string
 }
 
-export interface Cards{
-  id:string,
+export interface Profile{
+  _id:string,
   username:string,
   email:string,
   bio:string,
@@ -78,6 +78,12 @@ swipeLeftt(payload:any){
 messagesRetrive(id:string):Observable<any>{
 
   return this.http.get(`http://localhost:8000/api/messages/${id}`)
+}
+
+
+updateUserById(payload:Profile): Observable<any>{
+
+  return this.http.put(`http://localhost:8000/api/user/userupdate/${payload._id}`, payload);
 }
 
 }

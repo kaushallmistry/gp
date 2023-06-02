@@ -37,12 +37,17 @@ const registerSchema = new mongoose.Schema({
         type:String,
        
     },
+    reactionTime:{
+        type:String,
+       
+    },
     games:[gamesSchema],
     swipedLeft:[swipedLeftSchema],
     swipedRight:[
         {type:String},
     ],
     matchedUsers:[ {type:String},],
+
     
 },{timestamps:true});
 const Profile = mongoose.model('users',registerSchema);

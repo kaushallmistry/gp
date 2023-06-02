@@ -32,7 +32,7 @@
         <!-- <div class="example-box"  cdkDrag>{{item}}</div> -->
            <div class="card-container" *ngFor="let item of cards" cdkDrag>
             <p-card>
-              <img src="https://wallpaperaccess.com/full/3037908.jpg" alt="Profile Picture" class="profile-picture" />
+              <img [src]="!item.avatar?'https://wallpaperaccess.com/full/3037908.jpg':item.avatar" alt="Profile Picture" class="profile-picture" />
               <h2 class="profile-name">{{item.username}}</h2>
               <div class="profile-details">
                 <p><i class="pi pi-map-marker"></i> {{item.bio}}</p>

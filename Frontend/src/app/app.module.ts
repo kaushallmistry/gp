@@ -47,6 +47,7 @@ import { KnobModule } from 'primeng/knob';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTabsModule} from '@angular/material/tabs';
 @NgModule({
     declarations: [AppComponent, NotfoundComponent, SwipeComponent,LandingComponent,LoginComponent, RegisterComponent, ChatsComponent, ProfileComponent],
     imports: [
@@ -83,7 +84,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
         KnobModule,
         MatChipsModule,
         MatIconModule,
-        MatGridListModule
+        MatGridListModule,
+        MatTabsModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
