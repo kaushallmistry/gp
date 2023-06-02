@@ -1,74 +1,71 @@
 <div class="p-card" style="width:100%" fxLayout="column" style="padding:50px">
-
-    <div fxLayout="row" fxLayoutAlign="space-between start">
-        <h1>Edit Profile....</h1>
-
-        <button mat-raised-button color="primary">Save</button>
-    </div>
-
+    <h1>Edit Profile....</h1>
     <mat-divider></mat-divider>
+    <!-- <div class="card flex justify-content-center">
+        <p-knob [(ngModel)="value" [size]="200"></p-knob>
+    </div> -->
+    <div [fxLayout]="onMobile ? 'column':'row'" style="width:100%" fxLayoutGap="20px">
 
-    <form [formGroup]="formGroup">
+        <mat-form-field [style.width.%]="onMobile ? '100':'50'">
+            <mat-label>Username</mat-label>
+            <input matInput>
+        </mat-form-field>
+
+        <mat-form-field [style.width.%]="onMobile ? '100':'50'">
+            <mat-label>Email</mat-label>
+            <input matInput readonly>
+        </mat-form-field>
+
+    </div>
+    <div [fxLayout]="onMobile ? 'column':'row'" style="width:100%" fxLayoutGap="20px">
+
+        <mat-form-field [style.width.%]="onMobile ? '100':'50'">
+            <mat-label>bio</mat-label>
+            <input matInput>
+        </mat-form-field>
+
+        <mat-form-field [style.width.%]="onMobile ? '100':'50'">
+            <mat-label>Description</mat-label>
+            <input matInput>
+        </mat-form-field>
+
+    </div>     
+
+    <mat-form-field class="example-chip-list" fxLayout="column" style="width:100%">
+        <mat-label>Favorite Games</mat-label>
+        <mat-chip-grid #chipGrid aria-label="Enter Games">
+            <mat-chip-row *ngFor="let fruit of fruits"
+                        (removed)="remove(fruit)"
+                        [editable]="true"
+                        [aria-description]="'press enter to edit ' + fruit.name">
+            {{fruit.name}}
+            <button matChipRemove [attr.aria-label]="'remove ' + fruit.name">
+                <mat-icon svg-icon="cancel"></mat-icon>
+            </button>
+            </mat-chip-row>
+            <input placeholder="Enter games"
+                    [matChipInputFor]="chipGrid"
+                    (matChipInputTokenEnd)="add($event)"/>
+        </mat-chip-grid>
+    </mat-form-field>
     
-        <div [fxLayout]="onMobile ? 'column':'row'" style="width:100%" fxLayoutGap="20px">
+        <div style="width:100%">
+           <h1> Select Your Banner</h1>
+            
+            <mat-grid-list cols="4" rowHeight="1:1">
 
-            <mat-form-field [style.width.%]="onMobile ? '100':'50'">
-                <mat-label>Username</mat-label>
-                <input formControlName="username" matInput>
-            </mat-form-field>
+                <mat-grid-tile *ngFor="let item of gamesData"  fxLayoutGap="10px">
+                    
+                    <div fxLayout="column" >
+                        <img [src]="item?.thumbnail" style="width:80%"/>
+                        <span fxLAyoutAlign="center center" fxLayout="row" style="width:100%">{{item.title}}</span>
+                    </div>
 
-            <mat-form-field [style.width.%]="onMobile ? '100':'50'">
-                <mat-label>Email</mat-label>
-                <input matInput readonly>
-            </mat-form-field>
+                </mat-grid-tile>
+
+            </mat-grid-list>
+
 
         </div>
-        <div [fxLayout]="onMobile ? 'column':'row'" style="width:100%" fxLayoutGap="20px">
-
-            <mat-form-field [style.width.%]="onMobile ? '100':'100'">
-                <mat-label>Bio</mat-label>
-                <input formControlName="bio" matInput>
-            </mat-form-field>
-
-        </div>     
-
-        <mat-form-field class="example-chip-list" fxLayout="column" style="width:100%">
-            <mat-label>Favorite Games</mat-label>
-            <mat-chip-grid #chipGrid aria-label="Enter Games">
-                <mat-chip-row *ngFor="let fruit of fruits"
-                            (removed)="remove(fruit)"
-                            [editable]="true"
-                            [aria-description]="'press enter to edit ' + fruit.name">
-                {{fruit.name}}
-                <button matChipRemove [attr.aria-label]="'remove ' + fruit.name">
-                    <mat-icon svg-icon="cancel"></mat-icon>
-                </button>
-                </mat-chip-row>
-                <input placeholder="Enter games"
-                        [matChipInputFor]="chipGrid"
-                        (matChipInputTokenEnd)="add($event)"/>
-            </mat-chip-grid>
-        </mat-form-field>
-    
-    </form>
-
-    <div style="width:100%">
-        <h1> Select Your Banner</h1>
-        
-        <mat-grid-list cols="3" rowHeight="1.5:1">
-
-            <mat-grid-tile *ngFor="let item of gamesData; index as i"  fxLayoutGap="5px">
-                
-                <div fxLayout="column" style="margin: 20px;" >
-                    <img (click)="getSelectedItem(item)" [ngClass]="{'selected': selectedItem === item}" [src]="item?.thumbnail" style="width:100%"/>
-                    <span fxLayoutAlign="center center" fxLayout="row" style="width:100%;">{{item.title}}</span>
-                </div>
-
-            </mat-grid-tile>
-
-        </mat-grid-list>
-
-
-    </div>
 
 </div>
