@@ -14,6 +14,6 @@ export class AppComponent implements OnInit {
         ) { }
 
     ngOnInit() {
-       this.tokenService.ngOnInit()
+        this.tokenService.ngOnInit()
     }
 }

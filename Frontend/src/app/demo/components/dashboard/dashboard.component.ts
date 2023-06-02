@@ -4,6 +4,7 @@ import {  moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Subscription, debounce, debounceTime } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { TokenService } from '../../service/tokenService';
 
 
 export interface Cards{
@@ -29,11 +30,12 @@ export class DashboardComponent implements AfterViewInit,OnDestroy,OnInit {
     subs = new Subscription()
     constructor( 
         private ApiService:ApiService,
-        private cookieService:CookieService
+        private cookieService:CookieService,
         ){
         
     }
   ngOnInit(): void {
+ 
     this.formGroup = new FormGroup({
       swipeLeftCards : new FormArray([]),
       swipeRightCards : new FormArray([]),
@@ -52,8 +54,6 @@ export class DashboardComponent implements AfterViewInit,OnDestroy,OnInit {
       //////////////
       //subcriptions
       /////////////
-
-  
 
     
       const subs1 = this.ApiService.GetListofUser(this.userid).subscribe(v => this.cards = v as Cards[])

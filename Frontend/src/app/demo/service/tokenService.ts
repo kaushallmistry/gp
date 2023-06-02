@@ -3,7 +3,7 @@ import { AfterViewInit, Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { CookieService } from 'ngx-cookie-service';
-import { BehaviorSubject,Observable,interval, skip, take} from 'rxjs';
+import { BehaviorSubject,Observable,interval, skip, take, tap} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -33,12 +33,13 @@ export class TokenService  {
   }
   ngOnInit(): void {
         
-    interval(30000).subscribe(() => {
+    interval(5000).subscribe(() => {
       this.isExpires();
     });
 
     this.isExpiredToken.pipe(
       skip(1),
+      tap(v=>console.log(this.route.params))
     ).subscribe(v =>{
 
       if(v){
